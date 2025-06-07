@@ -1,0 +1,783 @@
+/* ==========================================================================
+   style.css - Estilos Consolidados do Projeto LBR Legends
+   --------------------------------------------------------------------------
+   Este arquivo contém todos os estilos CSS do projeto LBR Legends, unificando
+   as configurações globais, estilos das páginas (index, times, tabela, sobre) e
+   responsividade. Inclui configurações de fontes, cores, layout principal,
+   navegação, contador, grade de times, tabela de classificação, sobre e rodapé.
+   ========================================================================== */
+
+/* ========================================================= */
+/* 1. CONFIGURAÇÕES GLOBAIS E VARIÁVEIS CSS (ROOT)          */
+/* Define cores, fontes e estilos base para todo o site.  */
+/* ========================================================= */
+:root {
+    --cor-fundo-topo: #421A20;
+    --cor-fundo-base: #FF4C00;
+    --cor-fundo-footer: #10212B;
+    --cor-texto-principal: #F8F8F8;
+    --cor-destaque: #FDE9A9;
+    --cor-titulo-contador: #411922;
+    --cor-label-contador: #10212B;
+    --fonte-titulo: 'American Captain', sans-serif;
+    --fonte-texto: 'Bebas Neue', sans-serif;
+    --fonte-secundaria: 'Schabo Condensed', sans-serif;
+}
+
+@font-face {
+    font-family: 'American Captain';
+    src: url('/fonts/American-Captain.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('/fonts/BebasNeue-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Schabo Condensed';
+    src: url('/fonts/Schabo-Condensed.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Resto do CSS permanece igual */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, var(--cor-fundo-topo), var(--cor-fundo-base));
+    color: var(--cor-texto-principal);
+    font-family: var(--fonte-texto);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* ========================================================= */
+/* 2. SEÇÃO SUPERIOR (TOP SECTION)                           */
+/* Estilos para a área principal do conteúdo do topo.      */
+/* ========================================================= */
+.top-section {
+    flex: 1; /* Permite que esta seção cresça e ocupe o espaço disponível */
+    width: 100%; /* Ocupa toda a largura disponível */
+    display: flex; /* Transforma em container flexível */
+    flex-direction: column; /* Organiza itens em coluna */
+    align-items: center; /* Centraliza itens horizontalmente */
+    padding-bottom: 120px; /* Adiciona preenchimento na parte inferior */
+    box-sizing: border-box; /* Inclui padding na largura/altura */
+    min-height: calc(100vh - 100px); /* Altura mínima, considerando o rodapé (100px) */
+}
+
+/* ========================================================= */
+/* 3. NAVEGAÇÃO (NAV-BAR)                                    */
+/* Estilos para o menu de navegação do site.               */
+/* ========================================================= */
+.nav-bar {
+    display: flex; /* Transforma em container flexível */
+    align-items: center; /* Alinha itens verticalmente ao centro */
+    justify-content: center; /* Centraliza itens horizontalmente */
+    gap: 30px; /* Espaçamento entre os itens do menu */
+    padding: 15px 20px; /* Preenchimento interno */
+    flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
+    box-sizing: border-box; /* Inclui padding na largura/altura */
+    width: 100%; /* Ocupa toda a largura */
+}
+
+.nav-bar a {
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: var(--cor-texto-principal); /* Cor do texto do link */
+    font-size: 20px; /* Tamanho da fonte */
+    padding: 10px 15px; /* Preenchimento interno do link */
+    transition: color 0.3s ease; /* Transição suave na mudança de cor */
+}
+
+.nav-bar a:hover {
+    color: var(--cor-destaque); /* Muda a cor do link ao passar o mouse */
+}
+
+.nav-bar img.logo {
+    height: 50px; /* Altura da imagem do logo */
+    max-width: 100%; /* Garante que o logo não exceda a largura do seu contêiner */
+    object-fit: contain; /* Redimensiona a imagem para caber, mantendo proporções */
+}
+
+/* ========================================================= */
+/* 4. LINHA SEPARADORA                                       */
+/* Estilos para uma linha horizontal divisória.            */
+/* ========================================================= */
+.line {
+    width: 80%; /* Largura da linha */
+    height: 3px; /* Espessura da linha */
+    background-color: var(--cor-texto-principal); /* Cor da linha */
+    margin: 30px 0; /* Margem superior e inferior */
+}
+
+/* ========================================================= */
+/* 5. TEXTOS BANNERS (INDEX)                                 */
+/* Estilos para os textos grandes na página inicial.       */
+/* ========================================================= */
+.text-banner {
+    text-align: center; /* Centraliza o texto */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    text-shadow: none; /* Remove qualquer sombra de texto (se houver) */
+    -webkit-text-stroke: none; /* Remove contorno de texto (para navegadores WebKit) */
+}
+
+.text-contagem {
+    font-family: var(--fonte-secundaria); /* Fonte secundária para números grandes */
+    font-size: 95px; /* Tamanho da fonte */
+    letter-spacing: 4px; /* Espaçamento entre letras */
+    margin-top: 250px; /* Margem superior (para posicionamento visual) */
+    color: var(--cor-texto-principal); /* Cor do texto */
+}
+
+.text-campeonato {
+    font-family: var(--fonte-titulo); /* Fonte de título */
+    font-size: 50px; /* Tamanho da fonte */
+    margin-top: -20px; /* Ajusta a margem superior para sobrepor levemente o elemento anterior */
+    color: var(--cor-label-contador); /* Cor do texto */
+    letter-spacing: 1px; /* Espaçamento entre letras */
+}
+
+.text-campeonato .highlight {
+    color: var(--cor-destaque); /* Cor de destaque para parte do texto */
+    text-shadow: none; /* Remove sombra (se houver) */
+    -webkit-text-stroke: none; /* Remove contorno (se houver) */
+}
+
+/* ========================================================= */
+/* 6. CONTADOR (COUNTDOWN - INDEX)                           */
+/* Estilos para a caixa e itens do contador regressivo.    */
+/* ========================================================= */
+.count-box {
+    width: 800px; /* Largura da caixa */
+    max-width: 100%; /* Garante que não ultrapasse 100% da largura do pai */
+    height: 150px; /* Altura da caixa */
+    background-color: var(--cor-destaque); /* Cor de fundo */
+    margin: 30px auto; /* Margem superior/inferior e centralização horizontal */
+    border-radius: 20px; /* Cantos arredondados */
+    display: flex; /* Transforma em container flexível */
+    align-items: center; /* Alinha itens verticalmente ao centro */
+    justify-content: center; /* Centraliza itens horizontalmente */
+    color: var(--cor-label-contador); /* Cor do texto interno */
+    flex-wrap: nowrap; /* Impede que os itens do contador quebrem linha */
+    box-sizing: border-box; /* Inclui padding na largura/altura */
+    margin-top: -80px; /* Ajusta a margem superior para sobrepor elementos */
+}
+
+.countdown-item {
+    display: flex; /* Transforma em container flexível */
+    flex-direction: column; /* Organiza itens em coluna */
+    align-items: center; /* Centraliza itens horizontalmente */
+    justify-content: center; /* Centraliza itens verticalmente */
+    margin: 0 25px; /* Margem horizontal entre os itens */
+    line-height: 1; /* Altura da linha para evitar espaçamento extra */
+}
+
+.countdown-item span[id] {
+    font-family: var(--fonte-secundaria); /* Fonte para os números do contador */
+    font-size: 80px; /* Tamanho da fonte */
+    color: var(--cor-titulo-contador); /* Cor dos números */
+    line-height: 1; /* Altura da linha para os números */
+}
+
+.countdown-item .label {
+    font-family: var(--fonte-texto); /* Fonte para os rótulos (dias, horas, etc.) */
+    font-size: 22px; /* Tamanho da fonte */
+    color: var(--cor-label-contador); /* Cor dos rótulos */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    margin-top: 4px; /* Margem superior para separar do número */
+}
+
+/* ========================================================= */
+/* 7. SEÇÃO DE TIMES (TIMES.HTML)                            */
+/* Estilos para a grade de times na página de times.       */
+/* ========================================================= */
+.teams-content-wrapper {
+    display: flex; /* Transforma em container flexível */
+    flex-direction: column; /* Organiza itens em coluna */
+    align-items: center; /* Centraliza itens horizontalmente */
+    margin-top: 120px; /* Margem superior */
+    margin-bottom: 50px; /* Margem inferior */
+    width: 100%; /* Ocupa toda a largura */
+    max-width: 1600px; /* Largura máxima do conteúdo */
+    padding: 0 20px; /* Preenchimento horizontal */
+    box-sizing: border-box; /* Inclui padding na largura/altura */
+}
+
+.teams-text-title {
+    font-family: var(--fonte-titulo); /* Fonte de título */
+    font-size: 70px; /* Tamanho da fonte */
+    color: var(--cor-destaque); /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    margin-bottom: 40px; /* Margem inferior */
+    letter-spacing: 2px; /* Espaçamento entre letras */
+}
+
+.teams-grid {
+    display: grid; /* Transforma em container de grade (grid) */
+    grid-template-columns: repeat(6, 1fr); /* 6 colunas de larguras iguais */
+    gap: 30px 25px; /* Espaçamento entre as células da grade (linhas e colunas) */
+    justify-content: center; /* Centraliza a grade horizontalmente */
+    width: 100%; /* Ocupa toda a largura */
+    max-width: 1200px; /* Largura máxima da grade */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    box-sizing: border-box; /* Inclui padding na largura/altura */
+    overflow-x: hidden; /* Esconde barra de rolagem horizontal */
+}
+
+.team-card {
+    display: flex; /* Transforma em container flexível */
+    flex-direction: column; /* Organiza itens em coluna */
+    align-items: center; /* Centraliza itens horizontalmente */
+    text-align: center; /* Centraliza o texto */
+    gap: 10px; /* Espaçamento entre o quadrado e o nome do time */
+}
+
+.team-square {
+    width: 150px; /* Largura do quadrado do time */
+    height: 150px; /* Altura do quadrado do time */
+    background-color: var(--cor-fundo-topo); /* Cor de fundo */
+    border-radius: 20px; /* Cantos arredondados */
+    display: flex; /* Transforma em container flexível */
+    align-items: center; /* Alinha itens verticalmente */
+    justify-content: center; /* Centraliza itens horizontalmente */
+    transition: transform 0.2s ease; /* Transição suave para o efeito de hover */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
+}
+
+.team-square:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho ao passar o mouse */
+}
+
+.team-square img {
+    max-width: 90%; /* Largura máxima da imagem dentro do quadrado */
+    max-height: 90%; /* Altura máxima da imagem dentro do quadrado */
+    object-fit: contain; /* Redimensiona a imagem para caber, mantendo proporções */
+}
+
+.team-name {
+    font-family: var(--fonte-texto); /* Fonte para o nome do time */
+    font-size: 24px; /* Tamanho da fonte */
+    color: var(--cor-texto-principal); /* Cor do texto */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    letter-spacing: 1px; /* Espaçamento entre letras */
+}
+
+/* ========================================================= */
+/* 8. TABELA DE CLASSIFICAÇÃO (TABELA.HTML)                  */
+/* Estilos para a tabela de pontuação dos times.           */
+/* ========================================================= */
+.table-title-container {
+    display: flex; /* Transforma em container flexível */
+    flex-direction: column; /* Organiza itens em coluna */
+    align-items: center; /* Centraliza itens horizontalmente */
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 60px; /* Margem inferior */
+    color: var(--cor-texto-principal); /* Cor do texto */
+}
+
+.table-main-title {
+    font-family: var(--fonte-titulo); /* Fonte do título principal da tabela */
+    font-size: 100px; /* Tamanho da fonte */
+    text-transform: uppercase; /* Transforma em maiúsculas */
+    line-height: 0.7; /* Ajusta a altura da linha para um visual compacto */
+}
+
+.table-subtitle {
+    font-family: var(--fonte-titulo); /* Fonte do subtítulo da tabela */
+    font-size: 50px; /* Tamanho da fonte */
+    text-transform: uppercase; /* Transforma em maiúsculas */
+    margin-top: 10px; /* Margem superior */
+}
+
+.ranking-section {
+    width: 100%; /* Ocupa toda a largura */
+    display: flex; /* Transforma em container flexível */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    padding: 0 20px; /* Preenchimento horizontal */
+    box-sizing: border-box; /* Inclui padding na largura/altura */
+}
+
+.ranking-container {
+    display: flex; /* Transforma em container flexível */
+    justify-content: center; /* Centraliza as colunas da tabela */
+    gap: 80px; /* Espaçamento entre as colunas (esquerda/direita) */
+    max-width: 1700px; /* Largura máxima do container */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    align-items: flex-start; /* Alinha as colunas no topo */
+}
+
+.ranking-column {
+    display: flex; /* Transforma em container flexível */
+    flex-direction: column; /* Organiza itens em coluna */
+    align-items: center; /* Centraliza itens horizontalmente */
+    flex-shrink: 0; /* Impede que a coluna encolha */
+}
+
+.ranking-header-row,
+.ranking-row {
+    display: flex; /* Transforma em container flexível */
+    justify-content: space-between; /* Distribui o espaço entre os itens */
+    align-items: center; /* Alinha itens verticalmente */
+    gap: 5px; /* Espaçamento entre as células */
+    width: 800px; /* Largura da linha da tabela */
+    box-sizing: border-box; /* Inclui padding na largura/altura */
+    margin-bottom: 5px; /* Margem inferior para separar as linhas */
+}
+
+.ranking-header-cell {
+    background-color: transparent; /* Fundo transparente */
+    color: var(--cor-destaque); /* Cor do texto */
+    font-family: var(--fonte-texto); /* Fonte */
+    font-size: 24px; /* Tamanho da fonte */
+    padding: 10px 0; /* Preenchimento vertical */
+    text-transform: uppercase; /* Transforma em maiúsculas */
+    text-align: center; /* Centraliza o texto */
+    border-radius: 8px; /* Cantos arredondados */
+    display: flex; /* Transforma em container flexível */
+    justify-content: center; /* Centraliza o conteúdo */
+    align-items: center; /* Alinha o conteúdo verticalmente */
+    height: 45px; /* Altura da célula do cabeçalho */
+}
+
+/* Larguras específicas para cada tipo de célula de cabeçalho */
+.ranking-header-cell.num-header {
+    width: 70px;
+    flex-basis: 70px; /* Adicionado: Força a largura base */
+    flex-shrink: 0;  /* Adicionado: Impede que a célula encolha */
+}
+.ranking-header-cell.team-header {
+    width: 330px;
+    flex-basis: 330px; /* Adicionado */
+    flex-shrink: 0;  /* Adicionado */
+    text-align: left; /* Alinha texto à esquerda */
+    justify-content: flex-start; /* Alinha conteúdo ao início */
+    padding-left: 20px; /* Preenchimento à esquerda */
+}
+.ranking-header-cell.stat-header {
+    width: 120px;
+    flex-basis: 120px; /* Adicionado */
+    flex-shrink: 0;  /* Adicionado */
+}
+
+.ranking-cell {
+    background-color: var(--cor-fundo-topo); /* Cor de fundo da célula */
+    color: var(--cor-texto-principal); /* Cor do texto */
+    font-family: var(--fonte-texto); /* Fonte */
+    font-size: 26px; /* Tamanho da fonte */
+    padding: 10px 0; /* Preenchimento vertical */
+    border-radius: 8px; /* Cantos arredondados */
+    display: flex; /* Transforma em container flexível */
+    justify-content: center; /* Centraliza o conteúdo */
+    align-items: center; /* Alinha o conteúdo verticalmente */
+    height: 55px; /* Altura da célula de dados */
+    line-height: 1.2; /* Altura da linha */
+}
+
+/* Larguras específicas para cada tipo de célula de dados */
+.ranking-cell.num-cell {
+    width: 70px;
+    flex-basis: 70px; /* Adicionado */
+    flex-shrink: 0;  /* Adicionado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px; /* Espaçamento entre o número e o indicador */
+}
+
+.ranking-cell.team-name-cell {
+    width: 330px;
+    flex-basis: 330px; /* Adicionado */
+    flex-shrink: 0;  /* Adicionado */
+    text-align: left; /* Alinha texto à esquerda */
+    padding-left: 20px; /* Preenchimento à esquerda */
+    justify-content: flex-start; /* Alinha conteúdo ao início */
+}
+
+.ranking-cell.stat-cell {
+    width: 120px;
+    flex-basis: 120px; /* Adicionado */
+    flex-shrink: 0;  /* Adicionado */
+}
+
+.rank-indicator {
+    font-family: var(--fonte-texto); /* Fonte do indicador de posição */
+    font-size: 18px; /* Tamanho da fonte */
+    display: inline-block; /* Permite que o span tenha largura/altura e margem */
+}
+
+/* Cores para o indicador de posição */
+.rank-indicator.up { color: #5DD62C; }    /* Verde para subir posições */
+.rank-indicator.down { color: #FF0000; }  /* Vermelho para descer posições */
+.rank-indicator.neutral { color: var(--cor-texto-principal); font-size: 14px; } /* Cor padrão para sem mudança */
+
+/* ========================================================= */
+/* 9. SEÇÃO SOBRE (SOBRE.HTML)                               */
+/* Estilos para o texto da página "Sobre".                 */
+/* ========================================================= */
+.about-text {
+    font-family: var(--fonte-texto); /* Fonte do texto */
+    font-size: 24px; /* Tamanho da fonte */
+    color: var(--cor-texto-principal); /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+    max-width: 800px; /* Largura máxima do bloco de texto */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    line-height: 1.4; /* Espaçamento entre linhas */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+}
+
+/* ========================================================= */
+/* 10. RODAPÉ (FOOTER)                                       */
+/* Estilos para a seção inferior do site.                  */
+/* ========================================================= */
+.bottom-section {
+    width: 100%; /* Ocupa toda a largura */
+    height: 100px; /* Altura fixa do rodapé */
+    background-color: var(--cor-fundo-footer); /* Cor de fundo */
+    display: flex; /* Transforma em container flexível */
+    flex-direction: column; /* Organiza itens em coluna */
+    align-items: center; /* Centraliza itens horizontalmente */
+    justify-content: center; /* Centraliza itens verticalmente */
+    color: var(--cor-texto-principal); /* Cor do texto */
+    margin-top: auto; /* Empurra o rodapé para o final do flex container (body) */
+    padding: 0; /* Remove preenchimento padrão */
+    box-sizing: border-box; /* Inclui padding na largura/altura */
+}
+
+.social-icons {
+    display: flex; /* Transforma em container flexível */
+    gap: 20px; /* Espaçamento entre os ícones */
+    margin-top: 25px; /* Margem superior */
+}
+
+.social-icons img {
+    width: 40px; /* Largura dos ícones */
+    height: 40px; /* Altura dos ícones */
+    transition: transform 0.2s ease-in-out; /* Transição suave para o efeito de hover */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+}
+
+.social-icons img:hover {
+    transform: scale(1.15); /* Aumenta ligeiramente o tamanho ao passar o mouse */
+}
+
+.copyright {
+    font-size: 16px; /* Tamanho da fonte */
+    margin-top: 5px; /* Margem superior */
+    font-family: var(--fonte-texto); /* Fonte */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+}
+
+/* ========================================================= */
+/* 11. RESPONSIVIDADE                                        */
+/* Ajustes de estilo para diferentes tamanhos de tela.    */
+/* Usa 'max-width' para aplicar estilos abaixo de um      */
+/* determinado tamanho (Desktop-First).                   */
+/* ========================================================= */
+
+/* Para telas com largura máxima de 1750px (Desktops maiores) */
+@media (max-width: 1750px) {
+    .ranking-container {
+        gap: 40px; /* Reduz o espaçamento entre as colunas da tabela */
+    }
+}
+
+/* Para telas com largura máxima de 1400px (Desktops médios / Laptops) */
+@media (max-width: 1400px) {
+    .ranking-container {
+        flex-direction: column; /* Empilha as colunas da tabela verticalmente */
+        align-items: center; /* Centraliza as colunas empilhadas */
+        gap: 40px; /* Mantém o espaçamento entre as colunas (agora empilhadas) */
+    }
+}
+
+/* Para telas com largura máxima de 1024px (Tablets em modo paisagem / Laptops pequenos) */
+@media (max-width: 1024px) {
+    .teams-grid {
+        grid-template-columns: repeat(3, 1fr); /* Muda a grade de times para 3 colunas */
+    }
+}
+
+/* Para telas com largura máxima de 850px (Tablets em modo retrato) */
+@media (max-width: 850px) {
+    .ranking-header-row,
+    .ranking-row {
+        width: 100%; /* Ocupa toda a largura disponível */
+        max-width: 600px; /* Largura máxima para as linhas da tabela */
+    }
+
+    .table-main-title {
+        font-size: 70px; /* Reduz o tamanho da fonte do título principal da tabela */
+    }
+
+    .table-subtitle {
+        font-size: 35px; /* Reduz o tamanho da fonte do subtítulo da tabela */
+    }
+
+    /* Ajusta as larguras das células da tabela */
+    .ranking-header-cell.num-header {
+        width: 60px;
+        flex-basis: 60px; /* Ajuste aqui também */
+        flex-shrink: 0;   /* E aqui */
+    }
+    .ranking-header-cell.team-header {
+        width: 280px;
+        flex-basis: 280px; /* Ajuste aqui também */
+        flex-shrink: 0;   /* E aqui */
+    }
+    .ranking-header-cell.stat-header {
+        width: 80px;
+        flex-basis: 80px; /* Ajuste aqui também */
+        flex-shrink: 0;   /* E aqui */
+    }
+
+    .ranking-cell.num-cell {
+        width: 60px;
+        flex-basis: 60px; /* Ajuste aqui também */
+        flex-shrink: 0;   /* E aqui */
+    }
+    .ranking-cell.team-name-cell {
+        width: 280px;
+        flex-basis: 280px; /* Ajuste aqui também */
+        flex-shrink: 0;   /* E aqui */
+    }
+    .ranking-cell.stat-cell {
+        width: 80px;
+        flex-basis: 80px; /* Ajuste aqui também */
+        flex-shrink: 0;   /* E aqui */
+    }
+
+    .nav-bar {
+        font-size: 20px; /* Ajusta o tamanho da fonte da navegação */
+        gap: 20px; /* Reduz o espaçamento entre os itens da navegação */
+    }
+
+    .nav-bar .logo {
+        height: 50px; /* Mantém a altura do logo */
+        margin: 0 20px; /* Ajusta margens do logo */
+    }
+}
+
+/* Para telas com largura máxima de 768px (Tablets / Smartphones grandes) */
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column; /* Empilha os itens da navegação verticalmente */
+        gap: 20px; /* Espaçamento entre os itens empilhados */
+    }
+
+    .text-contagem {
+        font-size: 60px; /* Reduz o tamanho da fonte do texto de contagem */
+        margin-top: 80px; /* Ajusta a margem superior */
+    }
+
+    .text-campeonato {
+        font-size: 28px; /* Reduz o tamanho da fonte do texto do campeonato */
+        margin-top: 40px; /* Ajusta a margem superior */
+    }
+
+    .count-box {
+        width: 90%; /* Aumenta a largura da caixa do contador para quase 100% */
+        height: auto; /* Altura automática para se ajustar ao conteúdo */
+        padding: 20px 0; /* Preenchimento vertical */
+        flex-wrap: wrap; /* Permite que os itens do contador quebrem linha */
+    }
+
+    .countdown-item {
+        margin: 10px 15px; /* Ajusta margem dos itens do contador */
+    }
+
+    .countdown-item span[id] {
+        font-size: 60px; /* Reduz o tamanho da fonte dos números do contador */
+    }
+
+    .countdown-item .label {
+        font-size: 18px; /* Reduz o tamanho da fonte dos rótulos do contador */
+    }
+
+    .social-icons {
+        margin-top: 15px; /* Ajusta margem superior dos ícones sociais */
+    }
+
+    .copyright {
+        font-size: 12px; /* Reduz o tamanho da fonte do copyright */
+    }
+
+    .teams-text-title {
+        font-size: 40px; /* Reduz o tamanho da fonte do título dos times */
+    }
+
+    .teams-grid {
+        grid-template-columns: repeat(2, 1fr); /* Muda a grade de times para 2 colunas */
+        padding: 0 10px; /* Ajusta preenchimento horizontal */
+    }
+
+    .team-square {
+        width: 120px; /* Reduz o tamanho dos quadrados dos times */
+        height: 120px;
+    }
+
+    .team-name {
+        font-size: 18px; /* Reduz o tamanho da fonte do nome do time */
+    }
+
+    .about-text {
+        font-size: 20px; /* Reduz o tamanho da fonte do texto "Sobre" */
+        max-width: 90%; /* Aumenta a largura do bloco de texto "Sobre" */
+    }
+}
+
+/* Para telas com largura máxima de 650px (Smartphones em modo paisagem / Pequenos tablets) */
+@media (max-width: 650px) {
+    .ranking-header-row,
+    .ranking-row {
+        max-width: 450px; /* Reduz a largura máxima das linhas da tabela */
+    }
+
+    /* Ajusta as larguras das células da tabela */
+    .ranking-header-cell.team-header,
+    .ranking-cell.team-name-cell { width: 220px; flex-basis: 220px; } /* Ajuste aqui */
+
+    .table-main-title {
+        font-size: 55px; /* Reduz o tamanho da fonte do título principal da tabela */
+    }
+
+    .table-subtitle {
+        font-size: 28px; /* Reduz o tamanho da fonte do subtítulo da tabela */
+    }
+
+    .ranking-cell {
+        font-size: 22px; /* Ajusta o tamanho da fonte das células da tabela */
+        height: 50px; /* Reduz a altura das células da tabela */
+    }
+
+    .ranking-cell.num-cell {
+        font-size: 24px; /* Ajusta o tamanho da fonte do número da posição */
+    }
+
+    .ranking-cell.team-name-cell {
+        font-size: 24px; /* Ajusta o tamanho da fonte do nome do time na tabela */
+    }
+
+    .rank-indicator {
+        font-size: 16px; /* Ajusta o tamanho da fonte do indicador de rank */
+    }
+}
+
+/* Para telas com largura máxima de 480px (Smartphones padrão) */
+@media (max-width: 480px) {
+    .ranking-header-row,
+    .ranking-row {
+        max-width: 320px; /* Reduz ainda mais a largura máxima das linhas da tabela */
+        gap: 3px; /* Reduz o espaçamento entre as células */
+    }
+
+    /* Ajusta as larguras das células da tabela para telas muito pequenas */
+    .ranking-header-cell.num-header,
+    .ranking-cell.num-cell {
+        width: 45px;
+        flex-basis: 45px; /* Ajuste aqui */
+    }
+
+    .ranking-header-cell.team-header,
+    .ranking-cell.team-name-cell {
+        width: 150px;
+        flex-basis: 150px; /* Ajuste aqui */
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    .ranking-header-cell.stat-header,
+    .ranking-cell.stat-cell {
+        width: 60px;
+        flex-basis: 60px; /* Ajuste aqui */
+        font-size: 18px;
+    }
+
+    .ranking-cell {
+        height: 40px; /* Reduz a altura das células */
+    }
+
+    .table-main-title {
+        font-size: 40px; /* Reduz o tamanho da fonte do título principal da tabela */
+    }
+
+    .table-subtitle {
+        font-size: 22px; /* Reduz o tamanho da fonte do subtítulo da tabela */
+    }
+
+    .nav-bar {
+        font-size: 16px; /* Reduz o tamanho da fonte da navegação */
+        gap: 15px; /* Reduz o espaçamento entre os itens */
+        padding: 15px 0; /* Ajusta o preenchimento */
+    }
+
+    .nav-bar .logo {
+        height: 40px; /* Reduz a altura do logo */
+        margin: 0 15px; /* Ajusta margens */
+    }
+
+    .line {
+        margin-bottom: 40px; /* Ajusta margem da linha separadora */
+    }
+
+    .top-section {
+        padding-bottom: 80px; /* Ajusta preenchimento inferior da seção superior */
+        min-height: calc(100vh - 80px); /* Ajusta altura mínima considerando novo rodapé */
+    }
+
+    .bottom-section {
+        height: 80px; /* Reduz a altura do rodapé */
+    }
+
+    .social-icons {
+        gap: 15px; /* Reduz o espaçamento entre os ícones sociais */
+        margin-top: 15px; /* Ajusta margem */
+    }
+
+    .social-icons img {
+        width: 30px; /* Reduz o tamanho dos ícones sociais */
+        height: 30px;
+    }
+
+    .copyright {
+        font-size: 14px; /* Ajusta o tamanho da fonte do copyright */
+    }
+
+    .teams-content-wrapper {
+        margin-top: 60px; /* Reduz margem superior da seção de times */
+    }
+
+    .teams-text-title {
+        font-size: 30px; /* Reduz o tamanho da fonte do título dos times */
+        margin-bottom: 30px; /* Reduz margem inferior */
+    }
+
+    .teams-grid {
+        grid-template-columns: 1fr; /* Muda a grade de times para 1 coluna (empilha) */
+        gap: 20px; /* Reduz espaçamento entre os cards */
+        padding: 0 10px; /* Ajusta preenchimento */
+    }
+
+    .team-square {
+        width: 100px; /* Reduz o tamanho dos quadrados dos times */
+        height: 100px;
+    }
+
+    .team-name {
+        font-size: 16px; /* Reduz o tamanho da fonte do nome do time */
+    }
+
+    .about-text {
+        font-size: 18px; /* Reduz o tamanho da fonte do texto "Sobre" */
+        max-width: 90%; /* Aumenta a largura do bloco de texto "Sobre" */
+    }
+}
